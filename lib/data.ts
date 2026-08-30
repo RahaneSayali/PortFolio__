@@ -10,19 +10,18 @@ export const personal = {
   linkedin: "https://linkedin.com/in/sayali-rahane",
   github: "https://github.com/RahaneSayali",
   summary:
-    "Java Backend Engineer with ~2 years of experience building scalable microservices and distributed systems serving 50K+ DAU at 99.9% uptime. Key results: 5× API throughput (Redis), 40% latency reduction (Kafka), 35% DB load reduction. Proficient across Java Spring Boot and NestJS/Node.js; experienced in system design (HLD/LLD), Kubernetes, and CI/CD.",
+    "Software Engineer with ~2 years of experience building scalable microservices, distributed systems, and full-stack applications serving 50K+ DAU. Key results: 5× API throughput (Redis), 40% latency reduction (Kafka). Proficient across Java Spring Boot, Node.js, Next.js; experienced in system design, cloud infrastructure, and CI/CD.",
 };
 
 export const stats = [
-  { value: "50K+", label: "DAU Served" },
-  { value: "99.9%", label: "Uptime" },
-  { value: "5×", label: "API Throughput" },
-  { value: "40%", label: "Latency Reduced" },
+  { value: "50K+", label: "Daily Users" },
+  { value: "10K+", label: "Events / Sec" },
+  { value: "40%",  label: "Lower Latency" },
 ];
 
 export const techMarquee = [
   "Java", "Spring Boot", "Apache Kafka", "Redis", "Docker",
-  "Kubernetes", "AWS", "NestJS", "Node.js", "PostgreSQL",
+  "Kubernetes", "AWS", "Node.js", "PostgreSQL",
   "MongoDB", "MySQL", "GitHub Actions", "Hibernate ORM", "RabbitMQ",
   "Spring Security", "OAuth 2.0", "JWT", "JUnit 5", "Swagger",
   "Microservices", "System Design", "CI/CD", "TypeScript", "Fastify",
@@ -81,7 +80,7 @@ export const skillCategories = [
     icon: "Zap",
     color: "from-green-500/20 to-green-600/5",
     border: "border-green-500/20",
-    skills: ["NestJS", "Node.js", "Fastify", "Express"],
+    skills: ["Node.js", "Express", "Fastify"],
   },
   {
     title: "Messaging & Cache",
@@ -122,21 +121,24 @@ export const skillCategories = [
 
 export const experiences = [
   {
-    role: "Software Engineer — Backend",
+    role: "Software Engineer — Backend / Full Stack",
     company: "CentraLogic",
     period: "April 2025 – Present",
     location: "Pune, India",
     type: "Full-time",
     highlights: [
-      "Architected Java Spring Boot microservices serving 50K+ DAU at 99.9% uptime; applied Resilience4j circuit-breaker and bulkhead patterns across 10+ services to eliminate cascading failures.",
-      "Engineered Apache Kafka event pipelines (Producer/Consumer/Streams) at 10K+ events/sec; slashed end-to-end latency by 40% using idempotent consumers and dead-letter queues for exactly-once delivery.",
-      "Designed Redis caching layer (write-through, TTL eviction, Pub/Sub invalidation) cutting API response time from 320ms to 60ms — a 5× throughput gain.",
-      "Strengthened platform security with JWT + OAuth 2.0 and Spring Security RBAC; authored versioned Swagger/OpenAPI 3.0 contracts accelerating partner integration.",
-      "Optimised database performance by 35% via composite indexing, HikariCP connection-pool tuning, and Hibernate N+1 elimination across MySQL, PostgreSQL, and MongoDB.",
-      "Containerised services with Docker; orchestrated deployments on AWS EKS with rolling updates, HPA, and health probes — compressing release cycles from 2 days to 30 minutes.",
-      "Established GitHub Actions CI/CD pipelines (85%+ test coverage, SonarQube gates). Mentored 2 junior engineers and documented architectural decisions in ADRs.",
+      "Architected and maintained Java Spring Boot and Node.js microservices supporting 50K+ daily active users, with resilience patterns, structured logging, health checks, and fault-tolerant service communication.",
+      "Built REST APIs and event-driven services using Spring Boot, Node.js, Express, Apache Kafka, and RabbitMQ, improving asynchronous processing and reducing end-to-end request latency.",
+      "Developed scalable Next.js applications and backend integrations, connecting frontend workflows with REST APIs, authentication, role-based access control, and real-time service operations.",
+      "Engineered Redis caching with TTL, eviction, write-through caching, and Pub/Sub invalidation, reducing frequently accessed API response times and database load.",
+      "Optimised MySQL, PostgreSQL, and MongoDB queries through indexing, pagination, connection-pool tuning, and ORM optimisation, improving overall API performance.",
+      "Implemented secure application flows using JWT, OAuth 2.0, and Spring Security, with RBAC and versioned Swagger/OpenAPI contracts for reliable service integration.",
+      "Containerised applications using Docker and deployed services through AWS, Kubernetes, and Amazon EKS, using rolling deployments, health probes, autoscaling, and environment-based configuration.",
+      "Built and maintained CI/CD pipelines with GitHub Actions, incorporating automated testing, SonarQube quality gates, Docker builds, and deployment workflows to streamline production releases.",
+      "Worked across the complete development lifecycle — API design, database architecture, frontend integration, cloud deployment, monitoring, debugging, and production support.",
+      "Mentored junior engineers and documented technical decisions, API contracts, deployment processes, and architectural patterns to improve team development standards.",
     ],
-    tags: ["Java", "Spring Boot", "Kafka", "Redis", "AWS EKS", "Docker", "Kubernetes"],
+    tags: ["Java", "Spring Boot", "Node.js", "Next.js", "TypeScript", "Kafka", "RabbitMQ", "Redis", "PostgreSQL", "MySQL", "MongoDB", "Docker", "Kubernetes", "AWS", "EKS", "GitHub Actions", "OAuth 2.0", "JWT"],
     metrics: [
       { label: "DAU", value: "50K+" },
       { label: "Uptime", value: "99.9%" },
@@ -150,12 +152,17 @@ export const experiences = [
     location: "Pune, India",
     type: "Internship",
     highlights: [
-      "Developed RESTful APIs using Java Spring Boot and NestJS/Node.js; integrated RabbitMQ for async messaging across microservices; contributed to 6 production releases.",
-      "Resolved performance bottlenecks via SQL query optimisation and pagination, cutting response time by 25%; wrote JUnit 5 and Jest tests (80%+ coverage).",
+      "Developed REST APIs and backend services using Java Spring Boot and Node.js, integrating them with frontend workflows and internal microservices.",
+      "Built application features using Next.js, React, TypeScript, and REST APIs, contributing to end-to-end feature development from UI to backend.",
+      "Integrated RabbitMQ and asynchronous messaging for communication between distributed services and contributed to multiple production releases.",
+      "Improved API performance through SQL query optimisation, indexing, pagination, and backend refactoring, reducing response times by 25%.",
+      "Containerised development services with Docker and worked with AWS/Kubernetes-based deployment workflows across development and production environments.",
+      "Added JUnit, Jest, and API tests, achieving 80%+ test coverage and improving release confidence.",
+      "Participated in GitHub-based CI/CD workflows, code reviews, debugging, production issue resolution, and release management.",
     ],
-    tags: ["Spring Boot", "NestJS", "RabbitMQ", "JUnit 5", "Swagger"],
+    tags: ["Java", "Spring Boot", "Node.js", "Next.js", "TypeScript", "React", "PostgreSQL", "MySQL", "RabbitMQ", "Docker", "AWS", "Kubernetes", "GitHub Actions", "Jest", "JUnit"],
     metrics: [
-      { label: "Response time", value: "−25%" },
+      { label: "Faster APIs", value: "25%" },
       { label: "Test coverage", value: "80%+" },
       { label: "Prod releases", value: "6" },
     ],
@@ -209,12 +216,12 @@ export const projects = [
     status: "Production",
   },
   {
-    title: "NestAPI — Scalable REST Service",
+    title: "NodeAPI — Scalable REST Service",
     description:
-      "A fully-featured RESTful microservice built with NestJS and TypeScript. Includes RabbitMQ async messaging, request validation, Jest test suite at 80%+ coverage, and full Swagger docs.",
+      "A fully-featured RESTful microservice built with Node.js and TypeScript. Includes RabbitMQ async messaging, request validation, Jest test suite at 80%+ coverage, and full Swagger docs.",
     longDescription:
       "Follows clean architecture principles with domain-driven design. Features a custom interceptor pipeline, centralized error handling, and automated API contract testing.",
-    tech: ["NestJS", "Node.js", "TypeScript", "RabbitMQ", "PostgreSQL", "Jest"],
+    tech: ["Node.js", "TypeScript", "RabbitMQ", "PostgreSQL", "Jest"],
     metrics: { label: "Response time", value: "−25%" },
     gradient: "from-sky-600/30 via-blue-600/20 to-cyan-600/10",
     accent: "#0284c7",
@@ -286,9 +293,9 @@ export const faqs = [
     "I have hands-on experience with AWS and Azure, Docker, Kubernetes, and CI/CD. I’ve worked with services such as EC2, S3, RDS, Lambda, and EKS, containerised backend applications, managed Kubernetes deployments, and built GitHub Actions pipelines with SonarQube quality gates."
 },
   {
-    question: "Can you work with Node.js / NestJS as well?",
+    question: "Can you work with Node.js as well?",
     answer:
-      "Absolutely. I've built REST APIs with NestJS/Node.js and Fastify in production, integrated RabbitMQ messaging, and written Jest test suites. I'm comfortable context-switching between Java and Node.js depending on what the service needs.",
+      "Absolutely. I've built REST APIs with Node.js and Express in production, integrated RabbitMQ messaging, and written Jest test suites. I'm comfortable context-switching between Java and Node.js depending on what the service needs.",
   },
   {
     question: "When can you start?",

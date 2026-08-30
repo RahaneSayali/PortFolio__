@@ -1,84 +1,97 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Calendar } from "lucide-react";
 import { experiences } from "@/lib/data";
 import { useLang } from "@/lib/LangContext";
 
 export default function Experience() {
   const { tr } = useLang();
-  return (
-    <section id="experience" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.6 }} className="mb-12">
-          <p className="text-xs font-mono text-accent mb-2 uppercase tracking-widest">{tr("exp.label")}</p>
-          <h2 className="text-3xl sm:text-4xl font-display font-bold">{tr("exp.heading")}</h2>
-        </motion.div>
 
-        <div className="relative">
-          <div className="absolute left-0 md:left-[200px] top-0 bottom-0 w-px bg-border hidden md:block" />
-          <div className="space-y-12">
-            {experiences.map((exp, i) => (
-              <motion.div key={`${exp.role}-${i}`}
-                initial={{ opacity: 0, x: -32 }} whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="md:flex gap-8">
-                {/* Left: date */}
-                <div className="md:w-[200px] md:text-right md:pr-8 mb-4 md:mb-0 flex-shrink-0">
-                  <div className="flex items-center gap-2 md:justify-end text-xs text-muted mb-1">
-                    <Calendar size={12} />
-                    <span className="font-mono">{exp.period}</span>
-                  </div>
-                  <div className="flex items-center gap-2 md:justify-end text-xs text-muted mb-1">
-                    <MapPin size={12} /><span>{exp.location}</span>
-                  </div>
-                  <span className="text-xs px-2 py-0.5 rounded border border-border text-muted">
+  return (
+    <section id="experience" className="py-28 border-t border-border">
+      <div className="max-w-content mx-auto px-6 md:px-12">
+
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5 }}
+          className="text-[11px] font-mono text-muted uppercase tracking-[0.22em] mb-4"
+        >
+          {tr("exp.section")}
+        </motion.p>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.05 }}
+          className="text-[clamp(28px,3.5vw,44px)] font-bold text-foreground tracking-[-0.025em] leading-[1.1] mb-16"
+        >
+          {tr("exp.heading")}
+        </motion.h2>
+
+        <div className="space-y-4">
+          {experiences.map((exp, i) => (
+            <motion.div
+              key={`${exp.company}-${i}`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="card-glow rounded-2xl p-7 md:p-8"
+            >
+              {/* Header */}
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-6">
+                <div>
+                  <h3 className="text-[17px] font-semibold text-foreground tracking-[-0.015em]">{exp.role}</h3>
+                  <p className="text-[13px] text-accent font-mono mt-1">
+                    {exp.company} · {exp.location}
+                  </p>
+                </div>
+                <div className="sm:text-right shrink-0">
+                  <span className="text-[11px] font-mono text-muted uppercase tracking-[0.1em] block">{exp.period}</span>
+                  <span className="text-[11px] font-mono text-border mt-0.5 block">
                     {exp.type === "Full-time" ? tr("exp.fulltime") : tr("exp.internship")}
                   </span>
                 </div>
+              </div>
 
-                {/* Dot */}
-                <div className="hidden md:block relative flex-shrink-0">
-                  <div className="absolute left-[-5px] top-1 w-2.5 h-2.5 rounded-full bg-accent border-2 border-background" />
-                </div>
-
-                {/* Content */}
-                <div className="flex-1 p-6 rounded-xl border border-border bg-surface hover:border-accent/30 transition-colors duration-300 glow-border">
-                  <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
-                    <div>
-                      <h3 className="text-lg font-semibold text-foreground">{exp.role}</h3>
-                      <p className="text-accent-light text-sm font-medium">{exp.company}</p>
+              {/* Metrics */}
+              {exp.metrics?.length > 0 && (
+                <div className="flex flex-wrap gap-2.5 mb-6">
+                  {exp.metrics.map((m) => (
+                    <div
+                      key={m.label}
+                      className="flex items-center gap-1.5 text-[12px] font-mono px-3 py-1 rounded-full border border-accent/20 bg-accent/5"
+                    >
+                      <span className="text-accent font-bold">{m.value}</span>
+                      <span className="text-muted">{m.label}</span>
                     </div>
-                    {/* Metrics */}
-                    <div className="flex flex-wrap gap-2">
-                      {exp.metrics.map((m) => (
-                        <div key={m.label} className="text-center px-3 py-1.5 rounded-lg bg-accent/10 border border-accent/20">
-                          <p className="text-sm font-bold gradient-text">{m.value}</p>
-                          <p className="text-[10px] text-muted">{m.label}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <ul className="space-y-2 mb-4">
-                    {exp.highlights.map((h, j) => (
-                      <li key={j} className="flex gap-3 text-sm text-muted leading-relaxed">
-                        <span className="mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-accent/60" />
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="flex flex-wrap gap-2 pt-4 border-t border-border">
-                    {exp.tags.map((tag) => (
-                      <span key={tag} className="px-2 py-0.5 rounded text-xs bg-background border border-border text-muted">{tag}</span>
-                    ))}
-                  </div>
+                  ))}
                 </div>
-              </motion.div>
-            ))}
-          </div>
+              )}
+
+              {/* Highlights */}
+              <ul className="space-y-2.5 mb-6">
+                {exp.highlights.map((h, j) => (
+                  <li key={j} className="flex gap-3 text-[14px] text-muted leading-[1.75]">
+                    <span className="mt-2.5 w-1 h-1 rounded-full bg-border shrink-0" />
+                    {h}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 pt-5 border-t border-border">
+                {exp.tags.map((tag) => (
+                  <span key={tag} className="text-[11px] font-mono px-2.5 py-1 rounded-full border border-border text-muted">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

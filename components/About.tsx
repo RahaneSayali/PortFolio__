@@ -1,88 +1,56 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, MapPin, Briefcase } from "lucide-react";
-import { education } from "@/lib/data";
 import { useLang } from "@/lib/LangContext";
 
-const inView = {
-  initial: { opacity: 0, y: 40 },
+const inView = (delay = 0) => ({
+  initial: { opacity: 0, y: 16 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-80px" },
-  transition: { duration: 0.6, ease: "easeOut" },
-};
+  viewport: { once: true, margin: "-60px" } as const,
+  transition: { duration: 0.55, delay },
+});
 
 export default function About() {
   const { tr } = useLang();
 
-  return (
-    <section id="about" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
-        <motion.div {...inView} className="mb-12">
-          <p className="text-xs font-mono text-accent mb-3 uppercase tracking-widest">{tr("about.label")}</p>
+  const CAPABILITIES = [
+    { num: "01", titleKey: "cap.01.title", descKey: "cap.01.desc" },
+    { num: "02", titleKey: "cap.02.title", descKey: "cap.02.desc" },
+    { num: "03", titleKey: "cap.03.title", descKey: "cap.03.desc" },
+    { num: "04", titleKey: "cap.04.title", descKey: "cap.04.desc" },
+  ];
 
-          {/* Tech badge */}
-          <div className="flex flex-wrap items-center gap-2 mb-4">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-accent/30 bg-accent/8 text-xs font-mono text-accent-light">
-              {tr("about.badge")}
-            </span>
-            {["Java", "Node.js", "Next.js"].map((t) => (
-              <span key={t} className="px-2.5 py-0.5 rounded-md border border-border bg-surface text-xs font-mono text-muted">
-                {t}
-              </span>
+  return (
+    <section id="about" className="relative py-28 border-t border-border overflow-hidden">
+
+
+<div className="max-w-content mx-auto px-6 md:px-12 relative z-10">
+        <motion.p {...inView(0)} className="text-[11px] font-mono text-muted uppercase tracking-[0.22em] mb-12">
+          {tr("about.section")}
+        </motion.p>
+
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          <motion.div {...inView(0.05)}>
+            <h2 className="text-[clamp(30px,3.8vw,50px)] font-bold text-foreground tracking-[-0.025em] leading-[1.1] mb-7">
+              {tr("about.heading")}
+            </h2>
+            <div className="space-y-4 text-[15px] text-muted leading-[1.8]">
+              <p>{tr("about.p1")}</p>
+              <p>{tr("about.p2")}</p>
+              <p>{tr("about.p3")}</p>
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-2 gap-3">
+            {CAPABILITIES.map((c, i) => (
+              <motion.div key={c.num} {...inView(0.1 + i * 0.07)}
+                className="card-glow p-5 rounded-xl cursor-default">
+                <span className="text-[11px] font-mono text-accent block mb-3">{c.num}</span>
+                <h3 className="text-[13px] font-semibold text-foreground mb-2 leading-snug">{tr(c.titleKey)}</h3>
+                <p className="text-[12px] text-muted leading-[1.7]">{tr(c.descKey)}</p>
+              </motion.div>
             ))}
           </div>
-
-          <h2 className="text-3xl sm:text-4xl font-display font-bold mb-4">{tr("about.heading")}</h2>
-
-          {/* Taglines */}
-          <div className="space-y-1">
-            <p className="text-base text-muted italic">&ldquo;{tr("about.tagline1")}&rdquo;</p>
-            <p className="font-mono text-sm gradient-text tracking-wide">{tr("about.tagline2")}</p>
-          </div>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          <motion.div {...inView} className="space-y-5">
-            <p className="text-muted leading-relaxed">{tr("about.bio1")}</p>
-            <p className="text-muted leading-relaxed">{tr("about.bio2")}</p>
-            <p className="text-muted leading-relaxed">{tr("about.bio3")}</p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 32 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
-            className="space-y-4">
-            <div className="p-5 rounded-xl border border-border bg-surface glow-border">
-              <div className="flex items-center gap-3 mb-1">
-                <Briefcase size={16} className="text-accent" />
-                <span className="text-xs font-mono text-muted uppercase tracking-widest">{tr("about.current")}</span>
-              </div>
-              <p className="text-foreground font-medium">Software Engineer — Backend</p>
-              <p className="text-sm text-muted">CentraLogic · Pune, India</p>
-            </div>
-
-            <div className="p-5 rounded-xl border border-border bg-surface glow-border">
-              <div className="flex items-center gap-3 mb-1">
-                <GraduationCap size={16} className="text-accent" />
-                <span className="text-xs font-mono text-muted uppercase tracking-widest">{tr("about.education")}</span>
-              </div>
-              <p className="text-foreground font-medium">{education.degree}</p>
-              <p className="text-sm text-muted">{education.institution}</p>
-              <p className="text-sm text-muted">{education.period} · CGPA {education.cgpa}</p>
-            </div>
-
-            <div className="p-5 rounded-xl border border-border bg-surface glow-border">
-              <div className="flex items-center gap-3 mb-1">
-                <MapPin size={16} className="text-accent" />
-                <span className="text-xs font-mono text-muted uppercase tracking-widest">{tr("about.location")}</span>
-              </div>
-              <p className="text-foreground font-medium">Pune, India</p>
-              <p className="text-sm text-muted">{tr("about.open")}</p>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>

@@ -3,7 +3,7 @@
 import {
   SiOpenjdk, SiSpringboot, SiApachekafka, SiRedis, SiDocker,
   SiKubernetes, SiTerraform, SiNodedotjs, SiTypescript,
-  SiPostgresql, SiMongodb, SiNestjs, SiNextdotjs, SiReact,
+  SiPostgresql, SiMongodb, SiNextdotjs, SiReact,
   SiGit, SiGithubactions, SiMysql, SiGrafana, SiRabbitmq,
 } from "react-icons/si";
 
@@ -19,7 +19,6 @@ const techStack = [
   { icon: SiTypescript, name: "TypeScript" },
   { icon: SiPostgresql, name: "PostgreSQL" },
   { icon: SiMongodb, name: "MongoDB" },
-  { icon: SiNestjs, name: "NestJS" },
   { icon: SiNextdotjs, name: "Next.js" },
   { icon: SiReact, name: "React" },
   { icon: SiGit, name: "Git" },

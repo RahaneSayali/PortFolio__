@@ -1,34 +1,31 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import TechMarquee from "@/components/TechMarquee";
 import About from "@/components/About";
-import WhyHireMe from "@/components/WhyHireMe";
-import Skills from "@/components/Skills";
+import TechStack from "@/components/TechStack";
 import Experience from "@/components/Experience";
-import Projects from "@/components/Projects";
-import GitHubStats from "@/components/GitHubStats";
-import Testimonials from "@/components/Testimonials";
 import Leadership from "@/components/Leadership";
+import Projects from "@/components/Projects";
+import SystemDesign from "@/components/SystemDesign";
 import Blog from "@/components/Blog";
-import FAQ from "@/components/FAQ";
+import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
+
 export default function Home() {
   return (
     <main>
       <Navbar />
       <Hero />
-      <TechMarquee />
       <About />
-      <WhyHireMe />
-      <Skills />
+      <TechStack />
       <Experience />
-      <Projects />
-      <GitHubStats />
-      <Testimonials />
       <Leadership />
+      <Projects />
+      <SystemDesign />
       <Blog />
-      <FAQ />
+      <Testimonials />
       <Contact />
+      <Footer />
     </main>
   );
 }

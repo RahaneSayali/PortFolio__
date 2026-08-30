@@ -2,78 +2,149 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,400;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=JetBrains+Mono:wght@400;500;600&display=swap");
 
-/* ── Theme tokens ── */
+/* ── Design tokens — new sunset palette ── */
+/*
+  Palette:
+  #1D1A39  deep navy (dark bg)
+  #451952  deep purple (surface)
+  #662549  burgundy (border)
+  #AE445A  dusty rose (accent light / muted light)
+  #F39F5A  warm amber (accent dark)
+  #E8BCB9  soft blush (foreground dark / border light)
+*/
+
 :root {
-  /* Light mode */
-  --background: 250 250 250;
-  --surface: 244 244 245;
-  --border: 228 228 231;
-  --accent: 99 102 241;
-  --accent-light: 79 70 229;
-  --muted: 82 82 91;
-  --foreground: 9 9 11;
+  /* Light mode — blush & navy */
+  --background:   250 246 247;   /* near-white with rose tint */
+  --surface:      255 252 253;   /* soft white */
+  --border:       232 188 185;   /* #E8BCB9 blush */
+  --accent:       174 68 90;     /* #AE445A dusty rose */
+  --accent-light: 243 159 90;    /* #F39F5A amber */
+  --muted:        102 37 73;     /* #662549 burgundy */
+  --foreground:   29 26 57;      /* #1D1A39 deep navy */
 }
 
 .dark {
-  /* Dark mode — near-pure black with subtle purple undertone */
-  --background: 6 6 9;
-  --surface: 15 15 22;
-  --border: 32 32 46;
-  --accent: 99 102 241;
-  --accent-light: 129 140 248;
-  --muted: 148 148 168;
-  --foreground: 245 245 255;
+  /* Dark mode — deep navy & amber glow */
+  --background:   18 16 30;      /* deeper than #1D1A39 */
+  --surface:      29 26 57;      /* #1D1A39 */
+  --border:       69 25 82;      /* #451952 purple */
+  --accent:       243 159 90;    /* #F39F5A warm amber */
+  --accent-light: 174 68 90;     /* #AE445A dusty rose */
+  --muted:        155 123 138;   /* warm desaturated rose-gray */
+  --foreground:   232 188 185;   /* #E8BCB9 soft blush */
 }
 
-* {
-  scroll-behavior: smooth;
-}
+* { box-sizing: border-box; }
+
+html { color-scheme: dark light; }
 
 body {
   background-color: rgb(var(--background));
   color: rgb(var(--foreground));
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  position: relative;
 }
 
-.font-display {
-  font-family: "Playfair Display", Georgia, serif;
+/* Film grain overlay — adds cinematic texture */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9990;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
 }
 
-::-webkit-scrollbar {
-  width: 6px;
+/* Hero botanical decoration — adapts per theme */
+.hero-flowers {
+  opacity: 0.58;
 }
-::-webkit-scrollbar-track {
-  background: rgb(var(--background));
-}
-::-webkit-scrollbar-thumb {
-  background: rgb(var(--border));
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgb(var(--accent));
+.dark .hero-flowers {
+  opacity: 0.22;
+  filter: sepia(1) saturate(2.5) hue-rotate(-25deg) brightness(1.15);
 }
 
-::selection {
-  background: rgb(var(--accent));
-  color: #fff;
+/* ── Section ambient gradients ── */
+#about {
+  background-image:
+    radial-gradient(ellipse 55% 45% at 92% 8%,  rgba(243,159,90,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 35% at 4% 92%,  rgba(102,37,73,0.14) 0%, transparent 55%);
+}
+#experience {
+  background-image:
+    radial-gradient(ellipse 50% 45% at 0% 15%,  rgba(174,68,90,0.09) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 35% at 100% 80%, rgba(243,159,90,0.06) 0%, transparent 50%);
+}
+#projects {
+  background-image:
+    radial-gradient(ellipse 55% 45% at 96% 12%, rgba(243,159,90,0.09) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 40% at 0% 88%,  rgba(69,25,82,0.18) 0%, transparent 55%);
+}
+#system-design {
+  background-image:
+    radial-gradient(ellipse 55% 50% at 50% 0%,  rgba(69,25,82,0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 35% 30% at 100% 100%, rgba(174,68,90,0.07) 0%, transparent 50%);
+}
+#writing {
+  background-image:
+    radial-gradient(ellipse 45% 40% at 80% 50%, rgba(174,68,90,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 35% 30% at 10% 10%, rgba(243,159,90,0.05) 0%, transparent 50%);
+}
+#contact {
+  background-image:
+    radial-gradient(ellipse 55% 50% at 100% 0%,  rgba(243,159,90,0.11) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 35% at 0% 100%, rgba(102,37,73,0.14) 0%, transparent 50%);
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, #6366f1, #818cf8, #a5b4fc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* ── Card glow — glass morphism + hover amber glow ── */
+.card-glow {
+  position: relative;
+  border: 1px solid rgb(var(--border) / 0.65);
+  background: rgb(var(--surface) / 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.card-glow:hover {
+  border-color: rgb(var(--accent) / 0.38);
+  background: rgb(var(--surface) / 0.82);
+  box-shadow:
+    0 0 0 1px rgb(var(--accent) / 0.1),
+    0 8px 40px rgba(0, 0, 0, 0.45),
+    0 0 80px rgba(243, 159, 90, 0.07),
+    inset 0 1px 0 rgba(243, 159, 90, 0.09);
 }
 
-.glow-border {
-  box-shadow: 0 0 0 1px rgb(var(--border)), 0 0 20px rgba(99, 102, 241, 0.08);
+/* Subtle top-edge gradient shine inside cards */
+.card-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    160deg,
+    rgba(243, 159, 90, 0.04) 0%,
+    transparent 45%
+  );
+  pointer-events: none;
 }
 
-.noise-bg {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgb(var(--border)); border-radius: 99px; }
+
+::selection { background: rgb(var(--accent)); color: rgb(var(--background)); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }

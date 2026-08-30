@@ -4,15 +4,24 @@ import { LangProvider } from "@/lib/LangContext";
 import { ThemeProvider } from "next-themes";
 
 export const metadata: Metadata = {
-  title: "Sayali Rahane — Java Backend Engineer",
+  title: "Sayali Rahane — Backend Software Developer",
   description:
-    "Java Backend Engineer specialising in microservices, distributed systems, and AWS. ~2 years building scalable backends serving 50K+ DAU.",
-  keywords: ["Java Backend Engineer", "Spring Boot", "Microservices", "Kafka", "Redis", "AWS", "NestJS"],
+    "Backend software developer building reliable, scalable APIs, distributed systems and production-ready applications with Java, Spring Boot, Node.js, PostgreSQL and Azure.",
+  keywords: [
+    "Backend Developer", "Java Developer", "Spring Boot", "Node.js",
+    "System Design", "Microservices", "PostgreSQL", "Redis", "Kafka", "Azure",
+  ],
   authors: [{ name: "Sayali Rahane" }],
   openGraph: {
-    title: "Sayali Rahane — Java Backend Engineer",
-    description: "Building scalable microservices and distributed systems with Java, Spring Boot, Kafka, and AWS.",
+    title: "Sayali Rahane — Backend Software Developer",
+    description: "Building reliable backend systems for products that need to scale.",
     type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sayali Rahane — Backend Software Developer",
+    description: "Building reliable backend systems for products that need to scale.",
   },
 };
 

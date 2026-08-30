@@ -3,86 +3,84 @@
 import { motion } from "framer-motion";
 import { Users, MapPin, Award } from "lucide-react";
 import { leadership } from "@/lib/data";
-import { useLang } from "@/lib/LangContext";
 
-const orgColors: Record<string, string> = {
-  "Google Developer Student Club (GDSC)": "#4285f4",
-  "Microsoft Learn Student Ambassador": "#00a4ef",
-  "Coding Ninjas": "#f97316",
+const ORG_ACCENT: Record<string, string> = {
+  "Google Developer Student Club (GDSC)": "#F39F5A",
+  "Microsoft Learn Student Ambassador":   "#AE445A",
+  "Coding Ninjas":                        "#F39F5A",
 };
 
+const inView = (delay = 0) => ({
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-60px" } as const,
+  transition: { duration: 0.5, delay },
+});
+
 export default function Leadership() {
-  const { tr } = useLang();
-
   return (
-    <section className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="mb-12"
-        >
-          <p className="text-xs font-mono text-accent mb-2 uppercase tracking-widest">{tr("leadership.label")}</p>
-          <h2 className="text-3xl sm:text-4xl font-display font-bold">{tr("leadership.heading")}</h2>
-        </motion.div>
+    <section className="py-28 border-t border-border">
+      <div className="max-w-content mx-auto px-6 md:px-12">
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.p {...inView(0)} className="text-[11px] font-mono text-muted uppercase tracking-[0.22em] mb-4">
+          Community &amp; Leadership
+        </motion.p>
+
+        <motion.h2 {...inView(0.05)}
+          className="text-[clamp(28px,3.5vw,44px)] font-bold text-foreground tracking-[-0.025em] leading-[1.1] mb-16">
+          Beyond the code.
+        </motion.h2>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {leadership.map((item, i) => {
-            const accentColor = orgColors[item.org] ?? "#6366f1";
+            const accent = ORG_ACCENT[item.org] ?? "#F39F5A";
             return (
-              <motion.div
-                key={item.org}
-                initial={{ opacity: 0, y: 32 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: i * 0.12 }}
-                className="relative flex flex-col p-6 rounded-xl border border-border bg-surface hover:border-accent/40 transition-colors duration-300 overflow-hidden"
-              >
-                {/* Top accent line */}
-                <div
-                  className="absolute top-0 left-0 right-0 h-[2px]"
-                  style={{ background: `linear-gradient(90deg, ${accentColor}, transparent)` }}
-                />
+              <motion.div key={item.org} {...inView(0.08 + i * 0.08)}
+                className="card-glow rounded-2xl p-6 flex flex-col relative overflow-hidden">
 
-                {/* Icon + role */}
-                <div className="flex items-start gap-3 mb-4">
-                  <div
-                    className="p-2 rounded-lg flex-shrink-0"
-                    style={{ background: `${accentColor}18`, border: `1px solid ${accentColor}35` }}
-                  >
-                    <Users size={18} style={{ color: accentColor }} />
+                {/* Top accent line */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] rounded-t-2xl"
+                  style={{ background: `linear-gradient(90deg, ${accent}, transparent)` }} />
+
+                {/* Org badge */}
+                <div className="flex items-center gap-2 mb-5">
+                  <div className="p-2 rounded-lg shrink-0"
+                    style={{ background: `${accent}18`, border: `1px solid ${accent}35` }}>
+                    <Users size={15} style={{ color: accent }} />
                   </div>
-                  <div className="min-w-0">
-                    <p className="font-semibold text-foreground leading-snug">{item.role}</p>
-                    <p className="text-sm font-medium mt-0.5" style={{ color: accentColor }}>{item.org}</p>
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5">
-                      <span className="text-xs text-muted font-mono">{item.period}</span>
-                      <span className="flex items-center gap-1 text-xs text-muted">
-                        <MapPin size={10} />{item.location}
-                      </span>
-                    </div>
-                  </div>
+                  <span className="text-[12px] font-semibold leading-snug" style={{ color: accent }}>
+                    {item.org}
+                  </span>
                 </div>
 
-                {/* Certificate badge */}
+                {/* Role */}
+                <h3 className="text-[15px] font-bold text-foreground mb-1 tracking-[-0.01em]">
+                  {item.role}
+                </h3>
+
+                {/* Meta */}
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4">
+                  <span className="text-[11px] font-mono text-muted">{item.period}</span>
+                  <span className="flex items-center gap-1 text-[11px] font-mono text-muted">
+                    <MapPin size={9} /> {item.location}
+                  </span>
+                </div>
+
+                {/* Certificate */}
                 {item.cert && (
-                  <div className="flex items-center gap-1.5 mb-4 px-2.5 py-1.5 rounded-lg bg-border/40 w-fit">
-                    <Award size={11} className="text-muted flex-shrink-0" />
-                    <span className="text-[10px] font-mono text-muted">{item.cert}</span>
+                  <div className="flex items-center gap-1.5 mb-4 px-2.5 py-1.5 rounded-lg w-fit"
+                    style={{ background: `${accent}10`, border: `1px solid ${accent}30` }}>
+                    <Award size={10} style={{ color: accent }} />
+                    <span className="text-[10px] font-mono" style={{ color: accent }}>{item.cert}</span>
                   </div>
                 )}
 
                 {/* Highlights */}
-                <ul className="space-y-2.5 flex-1">
+                <ul className="space-y-2.5 flex-1 mt-auto">
                   {item.highlights.map((h, j) => (
-                    <li key={j} className="flex gap-2.5 text-sm text-muted leading-relaxed">
-                      <span
-                        className="mt-2 flex-shrink-0 w-1 h-1 rounded-full"
-                        style={{ background: accentColor, opacity: 0.7 }}
-                      />
-                      <span>{h}</span>
+                    <li key={j} className="flex gap-2.5 text-[13px] text-muted leading-[1.7]">
+                      <span className="mt-2 w-1 h-1 rounded-full shrink-0" style={{ background: accent, opacity: 0.7 }} />
+                      {h}
                     </li>
                   ))}
                 </ul>

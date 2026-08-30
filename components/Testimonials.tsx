@@ -1,102 +1,74 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
 import { testimonials } from "@/lib/data";
 import { useLang } from "@/lib/LangContext";
 
 export default function Testimonials() {
-  const [active, setActive] = useState(0);
   const { tr } = useLang();
 
-  const prev = () => setActive((a) => (a - 1 + testimonials.length) % testimonials.length);
-  const next = () => setActive((a) => (a + 1) % testimonials.length);
-
   return (
-    <section className="py-24 px-6 bg-surface/20">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
+    <section className="relative py-28 border-t border-border overflow-hidden">
+      {/* Parchment texture accent */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "url('/parchment.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.035,
+          mixBlendMode: "multiply",
+        }}
+      />
+
+      <div className="max-w-content mx-auto px-6 md:px-12 relative z-10">
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
+          transition={{ duration: 0.5 }}
+          className="text-[11px] font-mono text-muted uppercase tracking-[0.22em] mb-4"
         >
-          <p className="text-xs font-mono text-accent mb-2 uppercase tracking-widest">{tr("testimonials.label")}</p>
-          <h2 className="text-3xl sm:text-4xl font-display font-bold">{tr("testimonials.heading")}</h2>
-        </motion.div>
+          {tr("testimonials.label")}
+        </motion.p>
 
-        {/* All cards grid — desktop */}
-        <div className="hidden md:grid md:grid-cols-2 gap-5">
+        <motion.h2
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.05 }}
+          className="text-[clamp(28px,3.5vw,44px)] font-bold text-foreground tracking-[-0.025em] leading-[1.1] mb-16"
+        >
+          {tr("testimonials.heading")}
+        </motion.h2>
+
+        <div className="grid sm:grid-cols-2 gap-4">
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
-              initial={{ opacity: 0, y: 32 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="p-6 rounded-2xl border border-border bg-surface hover:border-accent/30 transition-colors duration-300"
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="card-glow rounded-2xl p-7"
             >
-              <Quote size={28} className="text-accent/30 mb-4" />
-              <p className="text-sm text-muted leading-relaxed mb-6 italic">&quot;{tr(`t${i}.quote`)}&quot;</p>
-              <div className="flex items-center gap-3">
-                <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${t.avatarColor} flex items-center justify-center flex-shrink-0`}>
-                  <span className="text-xs font-bold text-white">{t.avatar}</span>
+              {/* Quote — from i18n so it translates */}
+              <p className="text-[15px] text-foreground leading-[1.8] mb-7">
+                &ldquo;{tr(`t${i}.quote`)}&rdquo;
+              </p>
+
+              {/* Attribution */}
+              <div className="flex items-center gap-3 pt-5 border-t border-border">
+                <div className="w-9 h-9 rounded-full bg-foreground/8 border border-border flex items-center justify-center text-[11px] font-mono font-bold text-foreground shrink-0">
+                  {t.avatar}
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-foreground">{t.name}</p>
-                  <p className="text-xs text-muted">{tr(`t${i}.role`)}</p>
+                  <p className="text-[13px] font-semibold text-foreground">{t.name}</p>
+                  <p className="text-[11px] font-mono text-muted">{tr(`t${i}.role`)}</p>
                 </div>
               </div>
             </motion.div>
           ))}
-        </div>
-
-        {/* Slider — mobile */}
-        <div className="md:hidden">
-          <div className="relative overflow-hidden rounded-2xl border border-border bg-surface p-6 min-h-[280px]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active}
-                initial={{ opacity: 0, x: 40 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -40 }}
-                transition={{ duration: 0.25 }}
-              >
-                <Quote size={28} className="text-accent/30 mb-4" />
-                <p className="text-sm text-muted leading-relaxed mb-6 italic">
-                  &quot;{tr(`t${active}.quote`)}&quot;
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${testimonials[active].avatarColor} flex items-center justify-center`}>
-                    <span className="text-xs font-bold text-white">{testimonials[active].avatar}</span>
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-foreground">{testimonials[active].name}</p>
-                    <p className="text-xs text-muted">{tr(`t${active}.role`)}</p>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          <div className="flex items-center justify-between mt-4">
-            <button onClick={prev}
-              className="p-2 rounded-lg border border-border text-muted hover:text-white hover:border-accent/40 transition-colors">
-              <ChevronLeft size={18} />
-            </button>
-            <div className="flex gap-2">
-              {testimonials.map((_, i) => (
-                <button key={i} onClick={() => setActive(i)}
-                  className={`w-2 h-2 rounded-full transition-all duration-200 ${i === active ? "bg-accent w-6" : "bg-border"}`} />
-              ))}
-            </div>
-            <button onClick={next}
-              className="p-2 rounded-lg border border-border text-muted hover:text-white hover:border-accent/40 transition-colors">
-              <ChevronRight size={18} />
-            </button>
-          </div>
         </div>
       </div>
     </section>
