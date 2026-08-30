@@ -1,7 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
+const ALLOWED_ORIGINS = [
+  process.env.NEXT_PUBLIC_SITE_URL,   // set in Vercel env vars (Production only)
+  "https://sayali-rahane.vercel.app", // fallback — update to your actual domain
+].filter(Boolean);
+
 export async function POST(req: NextRequest) {
+  /* ── Origin guard ── */
+  const origin = req.headers.get("origin") ?? "";
+  if (!ALLOWED_ORIGINS.includes(origin)) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
   const resend = new Resend(process.env.RESEND_API_KEY ?? "");
   try {
     const { name, email, message } = await req.json();
