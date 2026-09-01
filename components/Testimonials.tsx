@@ -43,14 +43,16 @@ export default function Testimonials() {
         </motion.h2>
 
         <div className="grid sm:grid-cols-2 gap-4">
-          {testimonials.map((t, i) => (
+          {testimonials.map((t, i) => {
+            const isLastOdd = i === testimonials.length - 1 && testimonials.length % 2 !== 0;
+            return (
             <motion.div
               key={t.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="card-glow rounded-2xl p-7"
+              className={`card-glow rounded-2xl p-7${isLastOdd ? " sm:col-span-2 sm:max-w-[calc(50%-8px)] sm:mx-auto sm:w-full" : ""}`}
             >
               {/* Quote — from i18n so it translates */}
               <p className="text-[15px] text-foreground leading-[1.8] mb-7">
@@ -68,7 +70,8 @@ export default function Testimonials() {
                 </div>
               </div>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

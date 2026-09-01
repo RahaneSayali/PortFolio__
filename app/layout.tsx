@@ -4,7 +4,7 @@ import { LangProvider } from "@/lib/LangContext";
 import { ThemeProvider } from "next-themes";
 
 export const metadata: Metadata = {
-  title: "Sayali Rahane — Backend Software Developer",
+  title: "Sayali Rahane | Backend Software Developer",
   description:
     "Backend software developer building reliable, scalable APIs, distributed systems and production-ready applications with Java, Spring Boot, Node.js, PostgreSQL and Azure.",
   keywords: [
@@ -13,14 +13,14 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Sayali Rahane" }],
   openGraph: {
-    title: "Sayali Rahane — Backend Software Developer",
+    title: "Sayali Rahane | Backend Software Developer",
     description: "Building reliable backend systems for products that need to scale.",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sayali Rahane — Backend Software Developer",
+    title: "Sayali Rahane | Backend Software Developer",
     description: "Building reliable backend systems for products that need to scale.",
   },
 };

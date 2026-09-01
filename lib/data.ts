@@ -3,7 +3,7 @@ export const personal = {
   title: "Java Backend Engineer",
   subtitle: "Microservices · Distributed Systems · AWS · Node.js",
   tagline:
-    "I build reliable, high-throughput backend systems in Java and Node.js — from distributed microservices to event-driven pipelines.",
+    "I build reliable, high-throughput backend systems in Java and Node.js, from distributed microservices to event-driven pipelines.",
   email: "sayalipr15@gmail.com",
   phone: "+91 7620870335",
   location: "Pune, India",
@@ -32,19 +32,19 @@ export const whyHireMe = [
     icon: "Server",
     title: "Backend Systems Expert",
     description:
-      "I design microservices that handle real production load — 50K+ DAU, 10K+ events/sec — with circuit breakers, caching, and zero-downtime deployments baked in from day one.",
+      "I design microservices that handle real production load: 50K+ DAU, 10K+ events/sec, with circuit breakers, caching, and zero-downtime deployments baked in from day one.",
   },
   {
     icon: "Zap",
     title: "Performance-Obsessed",
     description:
-      "I've driven a 5× API throughput gain with Redis, a 40% Kafka latency cut, and a 20× lookup improvement. Performance isn't an afterthought — it's how I design.",
+      "I've driven a 5× API throughput gain with Redis, a 40% Kafka latency cut, and a 20× lookup improvement. Performance isn't an afterthought. It's how I design.",
   },
   {
     icon: "Shield",
     title: "Security-First Mindset",
     description:
-      "From JWT + OAuth 2.0 to PCI DSS-compliant field encryption and RBAC — I treat security as a core engineering discipline, not a checkbox.",
+      "From JWT + OAuth 2.0 to PCI DSS-compliant field encryption and RBAC. I treat security as a core engineering discipline, not a checkbox.",
   },
   {
     icon: "Users",
@@ -121,7 +121,7 @@ export const skillCategories = [
 
 export const experiences = [
   {
-    role: "Software Engineer — Backend / Full Stack",
+    role: "Software Engineer, Backend and Full Stack",
     company: "CentraLogic",
     period: "April 2025 – Present",
     location: "Pune, India",
@@ -135,7 +135,7 @@ export const experiences = [
       "Implemented secure application flows using JWT, OAuth 2.0, and Spring Security, with RBAC and versioned Swagger/OpenAPI contracts for reliable service integration.",
       "Containerised applications using Docker and deployed services through AWS, Kubernetes, and Amazon EKS, using rolling deployments, health probes, autoscaling, and environment-based configuration.",
       "Built and maintained CI/CD pipelines with GitHub Actions, incorporating automated testing, SonarQube quality gates, Docker builds, and deployment workflows to streamline production releases.",
-      "Worked across the complete development lifecycle — API design, database architecture, frontend integration, cloud deployment, monitoring, debugging, and production support.",
+      "Worked across the complete development lifecycle: API design, database architecture, frontend integration, cloud deployment, monitoring, debugging, and production support.",
       "Mentored junior engineers and documented technical decisions, API contracts, deployment processes, and architectural patterns to improve team development standards.",
     ],
     tags: ["Java", "Spring Boot", "Node.js", "Next.js", "TypeScript", "Kafka", "RabbitMQ", "Redis", "PostgreSQL", "MySQL", "MongoDB", "Docker", "Kubernetes", "AWS", "EKS", "GitHub Actions", "OAuth 2.0", "JWT"],
@@ -171,7 +171,7 @@ export const experiences = [
 
 export const projects = [
   {
-    title: "EventFlow — Kafka Pipeline Engine",
+    title: "EventFlow: Kafka Pipeline Engine",
     description:
       "A high-throughput event processing engine built with Apache Kafka and Spring Boot. Handles 10K+ events/sec with idempotent consumers, dead-letter queues, retry policies, and a real-time monitoring dashboard.",
     longDescription:
@@ -186,7 +186,7 @@ export const projects = [
     status: "Production",
   },
   {
-    title: "CacheLayer — Redis Optimization Service",
+    title: "CacheLayer: Redis Optimization Service",
     description:
       "A generic Redis caching layer library for Spring Boot microservices. Implements write-through, read-through, and Pub/Sub cache invalidation patterns with TTL management.",
     longDescription:
@@ -201,7 +201,7 @@ export const projects = [
     status: "Open Source",
   },
   {
-    title: "SecureGate — Auth Microservice",
+    title: "SecureGate: Auth Microservice",
     description:
       "A production-grade authentication and authorisation microservice with JWT, OAuth 2.0, Spring Security RBAC, and versioned OpenAPI contracts for seamless third-party integrations.",
     longDescription:
@@ -216,7 +216,7 @@ export const projects = [
     status: "Production",
   },
   {
-    title: "NodeAPI — Scalable REST Service",
+    title: "NodeAPI: Scalable REST Service",
     description:
       "A fully-featured RESTful microservice built with Node.js and TypeScript. Includes RabbitMQ async messaging, request validation, Jest test suite at 80%+ coverage, and full Swagger docs.",
     longDescription:
@@ -240,7 +240,7 @@ export const testimonials = [
     avatar: "SN",
     avatarColor: "from-blue-500 to-cyan-500",
     quote:
-      "Sayali is one of the sharpest backend engineers I've worked with. She redesigned our Kafka pipeline and the results were immediate — 40% latency drop overnight. Her understanding of distributed systems goes well beyond her experience level.",
+      "Sayali is one of the sharpest backend engineers I've worked with. She redesigned our Kafka pipeline and the results were immediate: 40% latency drop overnight. Her understanding of distributed systems goes well beyond her experience level.",
   },
   {
     name: "Pablo Veramendi",
@@ -249,7 +249,7 @@ export const testimonials = [
     avatar: "PV",
     avatarColor: "from-blue-600 to-sky-400",
     quote:
-      "What sets Sayali apart is how she thinks about systems end-to-end. She didn't just write the code — she documented the ADRs, wrote the OpenAPI contracts, and mentored the junior devs. The Redis caching layer she built is still in production with zero issues.",
+      "What sets Sayali apart is how she thinks about systems end-to-end. She didn't just write the code. She documented the ADRs, wrote the OpenAPI contracts, and mentored the junior devs. The Redis caching layer she built is still in production with zero issues.",
   },
   {
     name: "Arjun Deshmukh",
@@ -258,7 +258,7 @@ export const testimonials = [
     avatar: "AD",
     avatarColor: "from-orange-500 to-red-500",
     quote:
-      "I hired Sayali as an intern and she was writing production-level Spring Boot code within the first month. Her instinct for performance optimisation — indexing strategies, connection pooling, N+1 elimination — is something you rarely see at this stage of a career.",
+      "I hired Sayali as an intern and she was writing production-level Spring Boot code within the first month. Her instinct for performance optimisation, including indexing strategies, connection pooling, and N+1 elimination, is something you rarely see at this stage of a career.",
   },
   {
     name: "Nikita Gandhi",
@@ -267,7 +267,16 @@ export const testimonials = [
     avatar: "NG",
     avatarColor: "from-red-500 to-yellow-400",
     quote:
-      "Worked with Sayali on the security revamp project. She implemented the entire OAuth 2.0 + RBAC layer from scratch — clean, testable, and compliant. Also incredibly patient when explaining complex auth flows to the team.",
+      "Worked with Sayali on the security revamp project. She implemented the entire OAuth 2.0 + RBAC layer from scratch: clean, testable, and compliant. Also incredibly patient when explaining complex auth flows to the team.",
+  },
+  {
+    name: "Yash Kapure",
+    role: "Senior Software Developer",
+    company: "College Senior",
+    avatar: "YK",
+    avatarColor: "from-teal-500 to-cyan-500",
+    quote:
+      "I've known Sayali since our bachelor's, where she was my junior, and since then I've had the opportunity to see her grow and develop as a software engineer. What stands out is not just her work ethic, but how seriously she has taken her growth. She is putting a strong focus on building her core engineering skills, strengthening her technical fundamentals, and becoming a more well-rounded developer. She has always been curious, consistent, and willing to put in the effort to improve. I believe her mindset toward continuous learning, combined with her dedication and persistence, will take her a long way. I'd happily recommend her to any team looking for someone committed to learning and growing.",
   },
 ];
 
@@ -285,7 +294,7 @@ export const faqs = [
   {
     question: "Are you comfortable with system design?",
     answer:
-      "Yes — I've applied HLD/LLD in practice at CentraLogic. I've designed event-driven pipelines, Redis caching strategies, API gateway patterns, and multi-service auth flows. I'm confident discussing trade-offs around CAP theorem, eventual consistency, and distributed locking.",
+      "Yes, I've applied HLD/LLD in practice at CentraLogic. I've designed event-driven pipelines, Redis caching strategies, API gateway patterns, and multi-service auth flows. I'm confident discussing trade-offs around CAP theorem, eventual consistency, and distributed locking.",
   },
   {
   question: "What's your experience with cloud and DevOps?",
@@ -328,7 +337,7 @@ export const leadership = [
     cert: "Google (Certificate)",
     highlights: [
       "Serving as GDSC Lead with a team of 5 members, building and nurturing a developer community at MET Bhujbal Knowledge City, Nashik, Maharashtra.",
-      "Led 10+ technical workshops on Cloud, Backend, and Web Development — 100+ attendees per session, grew membership 3×.",
+      "Led 10+ technical workshops on Cloud, Backend, and Web Development, with 100+ attendees per session, and grew membership 3x.",
       "Actively contributing to projects and working collaboratively with multiple teams to drive innovation within the community.",
     ],
   },
@@ -340,7 +349,7 @@ export const leadership = [
     cert: "Microsoft (Certificate)",
     highlights: [
       "Contributing to club initiatives and raising awareness about Microsoft courses and services within a student community of 600+ members.",
-      "Participated in organising 5+ events — seminars, workshops, hackathons, and how-to sessions — as a core member of the college Coding Club.",
+      "Participated in organising 5+ events (seminars, workshops, hackathons, and how-to sessions) as a core member of the college Coding Club.",
       "Represented Microsoft to help students learn and innovate using Microsoft technologies and cloud tools.",
     ],
   },
@@ -359,7 +368,7 @@ export const leadership = [
 ];
 
 export const education = {
-  degree: "Bachelor of Engineering (B.E.) — Computer Engineering",
+  degree: "Bachelor of Engineering (B.E.) in Computer Engineering",
   institution: "MET Institute of Engineering, Nashik",
   period: "2020 – 2024",
   cgpa: "8.10 / 10.00",
@@ -380,9 +389,9 @@ export const blogPosts = [
   },
   {
     slug: "cloud-service-models-iaas-paas-saas",
-    title: "Service Models in Cloud Computing — IaaS, PaaS, SaaS",
+    title: "Service Models in Cloud Computing: IaaS, PaaS, SaaS",
     excerpt:
-      "A comprehensive breakdown of the three cloud service models — from the raw flexibility of IaaS to the developer-friendly PaaS to the plug-and-play simplicity of SaaS, with real-world provider examples.",
+      "A comprehensive breakdown of the three cloud service models, from the raw flexibility of IaaS to the developer-friendly PaaS to the plug-and-play simplicity of SaaS, with real-world provider examples.",
     date: "2023-08-04",
     readTime: 7,
     tags: ["Cloud", "AWS", "Azure", "GCP"],
@@ -394,7 +403,7 @@ export const blogPosts = [
     slug: "twitter-vs-threads",
     title: "The battle between Twitter and Threads is already heating up!",
     excerpt:
-      "Cage fight or not — Meta's Threads has already shaken Twitter's dominance. A feature-by-feature comparison: character limits, video duration, privacy controls, and where each platform wins.",
+      "Cage fight or not, Meta's Threads has already shaken Twitter's dominance. A feature-by-feature comparison: character limits, video duration, privacy controls, and where each platform wins.",
     date: "2023-07-11",
     readTime: 4,
     tags: ["Twitter", "Threads", "Meta", "Tech"],
@@ -404,7 +413,7 @@ export const blogPosts = [
   },
   {
     slug: "aws-vs-azure-vs-gcp",
-    title: "Cloud Computing — AWS vs Azure vs GCP: Which is Best for You?",
+    title: "Cloud Computing: AWS vs Azure vs GCP. Which is Best for You?",
     excerpt:
       "AWS leads in market share, Azure integrates deeply with Microsoft, GCP shines on data analytics. A practical guide to choosing the right cloud platform based on your team's needs.",
     date: "2023-07-04",
